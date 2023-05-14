@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useUser, useSupabaseClient } from '@supabase/auth-helpers-react'
+import Avatar from './avatar'
 
 type AccountProps = {
   session: any
@@ -99,6 +100,22 @@ export default function Account({ session }: AccountProps) {
         >
           {loading ? 'Loading...' : 'Update'}
         </button>
+      </div>
+
+      <div className='form-widget'>
+        <Avatar
+          uid={user.id}
+          url={avatar_url}
+          size={150}
+          onUpload={(url) => {
+            setAvatarUrl(url)
+            updateProfile({
+              username,
+              website,
+              avatar_url: url,
+            })
+          }}
+        />
       </div>
 
       <div>
