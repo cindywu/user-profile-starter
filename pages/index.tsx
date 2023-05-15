@@ -8,13 +8,16 @@ export default function Home() {
   const session = useSession()
   const supabase = useSupabaseClient()
   return (
-    <div className={'w-screen p-4'}>
+    <div className={'flex flex-row min-h-screen justify-center items-center'}>
       {!session ? (
-        <Auth
-          supabaseClient={supabase}
-          appearance={{ theme: ThemeSupa }}
-          theme='dark'
-        />
+        <div className={'w-96'}>
+          <Auth
+            supabaseClient={supabase}
+            appearance={{ theme: ThemeSupa }}
+            providers={[]}
+            theme='default'
+          />
+        </div>
       ) : (
         <div>
           hello world
